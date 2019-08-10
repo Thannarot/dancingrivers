@@ -80,6 +80,14 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'dancingriver.urls'
 
+# Celery
+
+CELERY_BROKER_URL = 'amqp://localhost'
+
+CELERY_RESULT_BACKEND = 'amqp'
+
+CELERY_ACCEPT_CONTENT = ['pickle']
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
