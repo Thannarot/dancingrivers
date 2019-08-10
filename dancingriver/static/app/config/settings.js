@@ -12,7 +12,7 @@ angular.module('baseApp').constant('appSettings', {
 		},
 		{
 			'name': 'How To Use',
-			'url': 'https://docs.google.com/document/d/e/2PACX-1vS7eInK_GfJjExG6TVJfQZl2Ig0MTkS-bTfsqljyFU6eQ69H0-N98FX6CSuIN0iSbk8iv7tGpbtBaLc/pub',
+			'url': '#',
 			'show': true
 		},
 	],
