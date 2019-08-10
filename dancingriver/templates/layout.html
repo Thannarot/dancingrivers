@@ -1,0 +1,115 @@
+{% load cms_tags menu_tags sekizai_tags staticfiles %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" data-framework="angularjs">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=1024">
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">-->
+	<meta name="description" content="">
+	<meta name="author" content="SERVIR MEKONG">
+	<meta name="keywords" content="River, Irrawady, SERVIR MEKONG, Mekong region, Myanmar, Thailand">
+	<title>Dancing Rivers</title>
+	<link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+
+	{% addtoblock "css" %}
+	    <style type="text/css">
+	        /** Hide when Angular is not yet loaded and initialized */
+	        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+	            display: none !important;
+	        }
+	    </style>
+
+		<!-- Bootstrap Core CSS -->
+		<link href="{% static 'vendor/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+		<!-- Bootstrap Plugins -->
+		<link href="{% static 'vendor/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css' %}" rel="stylesheet">
+		<!-- FontAwesome -->
+		<link href="{% static 'vendor/components-font-awesome/css/all.css' %}" rel="stylesheet">
+		<!-- Load CSS -->
+		{% if debug %}
+		<!-- Custom CSS -->
+		<link href="{% static 'css/main.css' %}" rel="stylesheet">
+		<link href="{% static 'css/navigation.css' %}" rel="stylesheet">
+		<link href="{% static 'css/footer.css' %}" rel="stylesheet">
+		{% else %}
+		<link href="{% static 'dist/application.min.css' %}" rel="stylesheet">
+		{% endif %}
+		<!-- Normalize CSS -->
+		<link href="{% static 'vendor/normalize-css/normalize.css' %}" rel="stylesheet">
+		<!-- ng-Dialog -->
+		<link href="{% static 'vendor/ng-dialog/css/ngDialog.min.css' %}" rel="stylesheet">
+		<link href="{% static 'vendor/ng-dialog/css/ngDialog-theme-default.min.css' %}" rel="stylesheet">
+
+	{% endaddtoblock %}
+
+	{% render_block "css" %}
+
+</head>
+<body>
+
+	<div ng-cloak class="container-fluid">
+		{% cms_toolbar %}
+	    <!-- CMS Menu -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	        <ul class="nav navbar-nav navbar-right">
+	            {% show_menu 0 100 100 100 %}
+	        </ul>
+	    </div>
+        {% include "navigation.html" %}
+		<div class="container-fluid container-wrapper">
+			{% block main_container %} {% endblock main_container %}
+		</div>
+	</div>
+
+    {% block footer %}
+    	{% include "footer.html" %}
+	{% endblock footer %}
+
+	{% addtoblock "js" %}
+
+		<!-- Load JS Lib -->
+		<!-- jQuery -->
+		<script src="{% static 'vendor/jquery/dist/jquery.min.js' %}"></script>
+		<!-- Bootstrap Core JavaScript -->
+		<script src="{% static 'vendor/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+		<!-- Bootstrap Plugins -->
+	    <script src="{% static 'vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js' %}"></script>
+	    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCaqvIckPRhmI3hwyG_XR3Fi-y_6mWexM&v=3.exp&libraries=drawing,geometry"></script>
+		<!--  Load Angular  -->
+		<script src="{% static 'vendor/angular/angular.min.js' %}"></script>
+	    <!-- Angular Dependent Library -->
+	    <script src="{% static 'vendor/angularjs-slider/dist/rzslider.min.js' %}"></script>
+		<!-- Graphs -->
+		<script src="{% static 'vendor/highcharts/highcharts.js' %}"></script>
+		<script src="{% static 'vendor/highcharts/modules/exporting.js' %}"></script>
+		<script src="{% static 'vendor/highcharts/modules/export-data.js' %}"></script>
+		<!--Angular Dialogue -->
+		<script src="{% static 'vendor/ng-dialog/js/ngDialog.min.js' %}"></script>
+		<!--Angular Strap -->
+		<script src="{% static 'vendor/angular-strap/dist/angular-strap.min.js' %}"></script>
+		<script src="{% static 'vendor/angular-strap/dist/angular-strap.tpl.min.js' %}"></script>
+		<script src="{% static 'vendor/angular-file-saver/dist/angular-file-saver.bundle.min.js' %}"></script>
+		<script src="{% static 'vendor/angular-spinner/dist/angular-spinner.min.js' %}"></script>
+
+		{% if debug %}
+	    <!-- Bootstrap Application -->
+	    <script src="{% static 'app/init.js' %}"></script>
+	    <!-- Load Settings -->
+	    <script src="{% static 'app/config/settings.js' %}"></script>
+	    <!-- Services -->
+	    <script src="{% static 'app/services/map.js' %}"></script>
+	    <!-- Controllers -->
+	    <script src="{% static 'app/controllers/settings.js' %}"></script>
+	    <script src="{% static 'app/controllers/map.js' %}"></script>
+		{% else %}
+		<script src="{% static 'dist/application.min.js' %}"></script>
+		{% endif %}
+
+	{% endaddtoblock %}
+
+
+	{% render_block "js" %}
+
+</body>
+</html>

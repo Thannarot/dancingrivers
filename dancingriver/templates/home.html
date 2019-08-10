@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% load cms_tags staticfiles %}
+
+{% block main_container %}
+
+<!-- Main Container -->
+<div class="row" ng-controller="dancingrivers">
+
+    <!-- Loader Container -->
+    <div id="loader" class="loader" ng-show="showLoader">
+        <i class="loading-img fas fa-spinner fa-pulse fa-4x"></i>
+    </div>
+    <!-- Alert Container -->
+    <div class="alert alert-dismissible text-center display-none custom-alert" role="alert">
+        <button type="button" class="close" ng-click="closeAlert()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>[[alertContent]]</strong>
+    </div>
+    
+    <!-- Map Container -->
+    <div class="map" id="map" ng-init="initMap('2014', 'rivermap');"></div>
+
+    {% include "panels/toolbox.html" %}
+    {% include "panels/chartbox.html" %}
+    {% include "panels/legendbox.html" %}
+
+</div>
+
+</div>
+{% endblock main_container %}

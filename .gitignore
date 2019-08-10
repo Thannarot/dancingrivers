@@ -1,0 +1,44 @@
+# python compile files
+# ===========
+*.pyc
+
+# private
+# ===========
+credentials/
+media/*
+# Exception to the rule
+!media/README.md
+static/*
+# Exception to the rule
+!static/README.md
+scripts/install.sh
+dancingriver/settings.py
+
+# Unused templates
+# ======================
+
+
+# Eclipse project files
+# ======================
+.project
+.pydevproject
+*.pyproj
+
+# Visual Studio project files
+# ======================
+.settings/
+.vs/
+*.sln
+
+# Vendor files
+# ======================
+dancingriver/static/vendor/*
+dancingriver/static/dist/*
+# Exception to the rule
+!dancingriver/static/dist/README.md
+
+# Node and related environment
+# ======================
+.npmignore
+node_modules/
+_pycache_/
